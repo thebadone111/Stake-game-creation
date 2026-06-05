@@ -13,11 +13,18 @@ Submit one game per day to the Stake platform. A dedicated review team handles b
 
 ## Key Files
 - `pipeline.md` — live daily tracker (what's in dev / review / submitted)
+- `todo.md` — master priority tracker with blocking/research/setup/first-game tasks
+- `game_ideas.md` — game concept library (reskins, CS2 case opening, Island Combat, Gacha NFT magnus opus)
 - `submissions/log.md` — full history of submitted games
 - `process/game-brief-template.md` — standard brief Zacke uses for each game
 - `process/review-checklist.md` — Ollie's review criteria
 - `process/submission-checklist.md` — final checks before sending to Stake
+- `process/workflow.md` — full 3-phase dev/review/submission workflow with infrastructure diagram
 - `resources/stake-requirements.md` — platform specs and technical limits
+- `resources/stack-stake-sdk.md` — SDK stack guide (slots, PixiJS + Svelte 5)
+- `resources/stack-hybrid.md` — hybrid stack guide (non-slots, Phaser 3)
+- `docs/` — technical notes for Zacke (RGS API, math SDK, frontend SDK, approval guidelines)
+- `docs/stake-engine-md-doc/` — offline mirror of stake-engine.com/docs (64 markdown files)
 - `team/` — individual team member profiles
 
 ## Workflow (Daily Cadence)
@@ -31,6 +38,9 @@ Submit one game per day to the Stake platform. A dedicated review team handles b
 - Project setup: 2026-06-05
 - Games submitted: 0
 - Designer/Animator: HIRING
+- ACP account: NOT YET REGISTERED (blocking everything)
+- Game concepts: ready in `game_ideas.md` (3 reskins + CS2 case + Island Combat + Gacha NFT)
+- Payout model: 10% GGR perpetual royalty. At 96% RTP, avg game ~$636/month. Top games $5K–$10K/month.
 
 ## Notes for Claude
 - I am the operations lead assistant and research assistant for this project

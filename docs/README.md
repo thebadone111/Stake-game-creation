@@ -11,10 +11,8 @@ _This directory contains the team's working notes, annotations, and summaries of
 | Official docs (browser only) | https://stake-engine.com/docs |
 | Markdown mirror (64 files, searchable) | https://github.com/jovanpanetie/stake-engine-md-doc |
 
-> **Recommended:** Clone the markdown mirror repo locally so Zacke can search the full docs in VS Code without a browser.
-> ```
-> git clone https://github.com/jovanpanetie/stake-engine-md-doc.git
-> ```
+> **Done — already cloned.** The mirror is at `docs/stake-engine-md-doc/` — 64 searchable markdown files. Snapshot from April 2026.
+> To update: `cd docs/stake-engine-md-doc && git pull`
 
 ---
 

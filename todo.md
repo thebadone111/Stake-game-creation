@@ -78,3 +78,5 @@ _Last updated: 2026-06-05_
 | — | Docs notes files created for all SDK sections | 2026-06-05 | rgs, math, frontend, approval notes all populated from docs repo |
 | — | How-games-work explainers written | 2026-06-05 | SDK stack and hybrid stack plain-English overviews in `docs/` |
 | 8 | Stake Engine docs cloned locally | 2026-06-05 | Done — `docs/stake-engine-md-doc/` |
+| — | `game_ideas.md` populated with full concept library | 2026-06-05 | 3 Japanese reskins, CS2 case opening, Island Combat RPG, Gacha PNG, Gacha NFT magnus opus |
+| — | Payout model researched and documented | 2026-06-05 | 10% GGR perpetual royalty. 96% RTP target. Avg game ~$636/mo royalties. See `CLAUDE.md`. |
