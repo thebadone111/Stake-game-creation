@@ -129,13 +129,30 @@ Games auto-qualify for Stake.us but must swap gambling terminology via a `sweeps
 
 ## Submission Process
 
-- **Portal:** Admin Control Panel (ACP) on stake-engine.com — **team account required before first submission**
-- **Review:** 3 independent reviewers rate 0–3 stars (design, gameplay, math compliance)
-  - Average ≥ 1 star → approved
-  - Average < 1 star → rejected (can resubmit after fixes)
-- **Review turnaround:** Hours for clean submissions; weeks if non-compliant
+- **Portal:** ACP at stake-engine.com — team **maxiai** registered ✅
+- **ACP URL pattern:** `stake-engine.com/teams/maxiai/games/{game}/...`
+- **Review:** 3 independent reviewers (ratings hidden from each other)
+  - Average **≥ 2.0 stars** → enters full review process
+  - Average **< 2.0 stars** → not published — can resubmit within **3 days** after fixing issues
+- **Review timeline:**
+  1. Submit → rating queue (≤24 hours for all 3 ratings)
+  2. If ≥ 2.0 avg → reviewer contacts you within a couple of days to begin full review
+  3. Back-and-forth with reviewer until checklist complete → approved → live within 24h (usually hours)
 - **Required with every submission:** Short blurb describing game theme and mechanics
 - **Post-approval:** Only minor visual fixes allowed — math and mechanics are locked
+
+### Pre-Submission Checklist (ACP blocks submission until all pass)
+- [ ] **Thumbnail uploaded** — via ACP game thumbnail page
+- [ ] **Frontend version published** — at least one version uploaded to ACP files
+- [ ] **Math version published** — at least one version uploaded to ACP files
+- [ ] **Math validation passed** — all game modes must pass RTP, hit-rate, and max-win checks
+
+### Payout Details
+- Payouts processed monthly — accounting closes at UTC midnight
+- Invoice appears on payments page confirming the amount
+- Funds sent to wallet within **12 hours** of invoice
+- **Wallet address must be set** — if no wallet configured, balance carries over to next month
+- Dashboard shows performance data; accounting updated every **5 minutes**
 
 ---
 

@@ -8,7 +8,7 @@ _Markdown mirror: https://github.com/jovanpanetie/stake-engine-md-doc/blob/main/
 
 ## Summary
 
-Every game must pass a review by 3 independent Stake Engine reviewers before going live. Each reviewer rates 0–3 stars across design, gameplay, and math compliance. Average ≥ 1 star = approved. A clean, complete submission can be reviewed in hours. An incomplete submission can sit for weeks.
+Every game must pass a review by 3 independent Stake Engine reviewers before going live. Each reviewer rates 0–3 stars. Average **≥ 2.0 stars** = enters full review. Below 2.0 = not published, resubmit within 3 days. A clean, complete submission can be live within 24–48 hours. An incomplete submission adds a full review cycle each time.
 
 **This file is Ollie and Tiger's reference. Zacke should be aware of these criteria when building.**
 
@@ -16,14 +16,26 @@ Every game must pass a review by 3 independent Stake Engine reviewers before goi
 
 ## The Review Process
 
-1. Submit game via ACP
-2. 3 independent reviewers assigned
-3. Each rates: **design + gameplay + math compliance** (0–3 stars each)
-4. Ratings hidden until all 3 are submitted
-5. Average ≥ 1.0 → **Approved**
-6. Average < 1.0 → **Rejected** — reviewers may give feedback, resubmission allowed after fixes
+1. Submit game via ACP (thumbnail + frontend version + math version + math validation must all pass first)
+2. Enters **rating queue** — 3 independent reviewers each assign a rating within **24 hours**; ratings hidden from each other
+3. Average calculated:
+   - **≥ 2.0 stars** → reviewer contacts you within a couple of days to begin full review
+   - **< 2.0 stars** → not published — can resubmit within **3 days** after addressing issues
+4. **Full review** — back-and-forth with assigned reviewer via email; fewer rounds = faster ship
+5. All checklist items cleared → **Approved** → live on Stake within **24 hours** (usually hours)
+6. Performance tracked live on dashboard (updates every 5 minutes)
 
-**Review queue is shared across all teams.** Non-compliant submissions slow down everyone and may get you deprioritised.
+**Every round of feedback costs time.** Self-review against the checklist before submitting is the single biggest speed lever we have.
+
+### ACP Details (team: maxiai)
+- ACP: `stake-engine.com/teams/maxiai`
+- Game files: `stake-engine.com/teams/maxiai/games/{game}/files`
+- Thumbnail: `stake-engine.com/teams/maxiai/games/{game}/thumbnail`
+
+### Payout Details
+- Processed monthly — closes at UTC midnight
+- Invoice appears on payments page; funds sent to wallet within **12 hours**
+- **Wallet address must be configured** — if unset, balance carries over (not lost, but delayed)
 
 ---
 
@@ -33,7 +45,7 @@ Every game must pass a review by 3 independent Stake Engine reviewers before goi
 |-------|----------|-------------------|
 | ★★★ | Studio quality, exceptional creativity and polish | Featured, Burst Games, Stake Exclusives, New Releases (priority) |
 | ★★ | Strong quality, clear originality | New Releases, Burst/Exclusives if popularity drives it |
-| ★ | Meets minimum bar but low polish | **NOT published** — sent back for improvements |
+| ★ | Meets minimum bar but low polish | **NOT published** — average must be ≥ 2.0 to enter full review |
 
 **Our target is ★★ minimum, ★★★ where possible.**
 

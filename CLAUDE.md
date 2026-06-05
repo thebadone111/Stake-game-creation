@@ -38,9 +38,10 @@ Submit one game per day to the Stake platform. A dedicated review team handles b
 - Project setup: 2026-06-05
 - Games submitted: 0
 - Designer/Animator: HIRING
-- ACP account: NOT YET REGISTERED (blocking everything)
+- ACP account: REGISTERED ✅ — Team name: **maxiai** — ACP: stake-engine.com/teams/maxiai
 - Game concepts: ready in `game_ideas.md` (3 reskins + CS2 case + Island Combat + Gacha NFT)
 - Payout model: 10% GGR perpetual royalty. At 96% RTP, avg game ~$636/month. Top games $5K–$10K/month.
+- Payouts: monthly, closes UTC midnight, invoice on payments page, funds sent within 12h. Wallet address must be set.
 
 ## Notes for Claude
 - I am the operations lead assistant and research assistant for this project

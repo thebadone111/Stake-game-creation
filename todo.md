@@ -8,7 +8,7 @@ _Last updated: 2026-06-05_
 
 | # | Task | Owner | Notes |
 |---|------|-------|-------|
-| 1 | **Register team account on stake-engine.com and get ACP access** | Tiger | Nothing can be submitted without this. Check if it requires an application or is self-serve. |
+| ~~1~~ | ~~Register team account on stake-engine.com and get ACP access~~ | ~~Tiger~~ | ✅ Done — team name: **maxiai**. ACP at stake-engine.com/teams/maxiai |
 | 2 | **Build Mock RGS server (Flask on AWS EC2)** | Zacke/Tiger | Unblocks all local dev and Ollie's review workflow. See `docs/workflow.md` for spec. ACP is assumed production-only — local testing depends on this. |
 | 3 | **Set up Cloudflare Pages for review builds** | Tiger | Connect GitHub → Cloudflare Pages auto-deploy. Ollie gets a preview URL per push. Points `rgs_url` at EC2 mock RGS. |
 
@@ -80,3 +80,4 @@ _Last updated: 2026-06-05_
 | 8 | Stake Engine docs cloned locally | 2026-06-05 | Done — `docs/stake-engine-md-doc/` |
 | — | `game_ideas.md` populated with full concept library | 2026-06-05 | 3 Japanese reskins, CS2 case opening, Island Combat RPG, Gacha PNG, Gacha NFT magnus opus |
 | — | Payout model researched and documented | 2026-06-05 | 10% GGR perpetual royalty. 96% RTP target. Avg game ~$636/mo royalties. See `CLAUDE.md`. |
+| 1 | ACP account registered | 2026-06-05 | Team name: **maxiai** — stake-engine.com/teams/maxiai. Can submit a game right now. |
