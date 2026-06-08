@@ -99,7 +99,7 @@ That's all it does. It's a lookup service.
 
 ---
 
-## Layer 3: The Frontend (Zacke builds this in PixiJS + Svelte)
+## Layer 3: The Frontend (Tom builds this in PixiJS + Svelte)
 
 ### What it does
 The frontend is the game the player sees and clicks. Its only job is to:
@@ -166,10 +166,9 @@ If the player disconnects mid-round, when they reload, `/wallet/authenticate` re
 
 | Who | What they build |
 |-----|----------------|
-| Zacke | Python math model (symbols, reels, paytable, bonus rules) |
-| Zacke | Frontend game app (PixiJS animations, Svelte UI, event handlers) |
-| Designer | Symbol art, background, animations, UI assets |
-| Tiger | Game brief, submission assets (tile BG/FG/logo), submission blurb |
+| Zacke + Nils | Python math model (symbols, reels, paytable, bonus rules) |
+| Tom | Frontend game app (PixiJS animations, Svelte UI, event handlers) |
+| Tiger | AI-generated art assets, submission assets (tile BG/FG/logo), game brief, submission blurb |
 | Ollie | Reviews the built game against the review checklist |
 
 ---

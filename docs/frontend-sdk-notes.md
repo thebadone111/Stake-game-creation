@@ -247,7 +247,7 @@ For 2-3 star quality, animations need to be **smooth, purposeful, and cohesive**
 _Source: https://stake-engine.com/docs/front-end/getting-started_
 _Source: https://stake-engine.com/docs/front-end/dependencies_
 
-**[TODO — Zacke to fill in once setup is complete]**
+**[TODO — Tom to fill in once setup is complete — see `docs/setup-frontend.md` for full environment setup]**
 
 Steps to document:
 1. Install Node.js dependencies

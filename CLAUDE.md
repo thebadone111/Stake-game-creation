@@ -37,7 +37,7 @@ Submit one game per day to the Stake platform. A dedicated review team handles b
 
 ## Workflow (Daily Cadence)
 
-**Day before:** Tiger generates AI art assets for next game (Midjourney/Ideogram). Assets must be ready before build day starts — art is the critical path.
+**Day before:** Tiger generates AI art assets for next game (ComfyUI + Flux 2 locally, RunComfy for final quality). Assets must be ready before build day starts — art is the critical path.
 
 **European morning (9am–12pm CET):**
 1. Morning sync (15 min) — Tiger briefs the day. Zacke + Nils start math. Assets confirmed ready for Tom.

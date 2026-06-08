@@ -29,7 +29,7 @@ _This directory contains the team's working notes, annotations, and summaries of
 |------|--------|----------------|
 | [rgs-notes.md](rgs-notes.md) | API flow, wallet endpoints, session handling, money/currency, error codes | Zacke |
 | [math-sdk-notes.md](math-sdk-notes.md) | Python math framework, game structure, simulation, file format | Zacke |
-| [frontend-sdk-notes.md](frontend-sdk-notes.md) | PixiJS/Svelte SDK, events, file structure, Storybook | Zacke |
+| [frontend-sdk-notes.md](frontend-sdk-notes.md) | PixiJS/Svelte SDK, events, file structure, Storybook | Tom |
 | [approval-notes.md](approval-notes.md) | Submission checklist, quality rankings, replay requirements, tile assets | Tiger + Ollie |
 
 ---

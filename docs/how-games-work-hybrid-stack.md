@@ -222,11 +222,9 @@ URL contains: ?replay=true&game=...&version=...&mode=...&event=...&rgs_url=...
 
 | Who | What they build |
 |-----|----------------|
-| Zacke | Python math model (custom events, outcomes, probabilities) |
-| Zacke | Phaser game scenes and animations |
-| Zacke | RGS client (write once, reuse) |
-| Designer | Game art, UI assets, animations |
-| Tiger | Game brief, tile assets (BG/FG/logo), submission blurb |
+| Zacke + Nils | Python math model (custom events, outcomes, probabilities) |
+| Tom | Phaser game scenes, animations, RGS client |
+| Tiger | AI-generated art assets, game brief, tile assets (BG/FG/logo), submission blurb |
 | Ollie | Reviews the built game against the review checklist |
 
 ---
