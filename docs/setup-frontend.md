@@ -14,20 +14,13 @@ You won't be building from scratch — you'll copy one of the example apps and c
 
 ## System Requirements
 
-**Node 18.18.0 — exact version required**
-The SDK is pinned to this version. Using anything else will likely cause issues.
-
-Use nvm to manage Node versions:
+**Node 22.x**
+Node 22.16.0 is confirmed working. Use nvm to manage versions if needed:
 ```bash
-# Install nvm if you don't have it
 # Mac/Linux: https://github.com/nvm-sh/nvm
 # Windows: https://github.com/coreybutler/nvm-windows
 
-nvm install 18.18.0
-nvm use 18.18.0
-
-# Verify
-node --version   # should print v18.18.0
+node --version   # confirm 22.x
 ```
 
 **pnpm 10.5.0 — exact version required**
@@ -42,6 +35,25 @@ pnpm --version   # should print 10.5.0
 ```bash
 git --version
 ```
+
+---
+
+## Windows — Required Fix Before Running Storybook
+
+The SDK's Storybook scripts use Unix env var syntax that breaks on Windows. After cloning, apply this fix to each example app you want to run (`lines`, `ways`, `cluster`, `scatter`):
+
+**1. Install cross-env in each app:**
+```bash
+cd apps/lines
+pnpm add -D cross-env
+```
+
+**2. Update `apps/lines/package.json` storybook script:**
+```json
+"storybook": "cross-env PUBLIC_CHROMATIC=true storybook dev -p 6001 public"
+```
+
+Repeat for each app. Without this, Storybook will fail with `'PUBLIC_CHROMATIC' is not recognized`.
 
 ---
 
@@ -89,6 +101,18 @@ pnpm run dev --filter=lines
 ```
 
 This requires the mock RGS to be running. Storybook works without it.
+
+---
+
+## What You Receive From Zacke (Don't Write This Yourself)
+
+Before starting each game, Zacke delivers a handoff package. You drop these in — you do not write them:
+
+- **`config.ts`** — complete and ready to use. Contains game name, symbol names, paytable values, reel strips, bet modes. Do not edit the paytable or reel strip values — those are Zacke's math.
+- **BookEvent structure** — a written description of every custom event the game uses, with the payload shape. E.g. `cascadeExplode: { positions: [x, y][] }`. This is what you wire in `bookEventHandlerMap.ts`.
+- **Art assets** — from Tiger, confirmed ready before your session starts.
+
+Your job starts after the handoff: wire the events, build the animations, integrate the assets, get every Storybook story passing.
 
 ---
 
@@ -145,9 +169,12 @@ apps/lines/src/
     *.stories.svelte        ← Storybook story files
 ```
 
-The two files you'll edit most often for a new game:
+The files you'll work in for a new game:
 - `bookEventHandlerMap.ts` — wires each BookEvent from the server to frontend animations
-- `Symbol.svelte` — how each symbol looks and animates
+- `Symbol.svelte` / `constants.ts` — how each symbol looks and animates, size ratios, asset keys
+- `assets/` — drop in the new art (spritesheets, Spine files, audio)
+
+**You do not edit:** `config.ts` paytable values or reel strip arrays — those come from Zacke complete.
 
 ---
 

@@ -6,9 +6,14 @@ Backend Lead. Owns the math SDK — game logic, simulation, and all Python devel
 ## What This Looks Like Day-to-Day
 - Receive game brief from Tiger
 - Build `game_config.py` and `gamestate.py` for each game
-- Run dev sims to verify logic, then production sims when confirmed
+- Run dev sims (`int(1e4)`) to verify logic quickly during iteration
+- Run production sims (`int(1e6)`) once logic is confirmed — use 24 Python threads, 32 Rust threads
 - Validate RTP and hit rate against `docs/maths-guide.md`
-- Drop the event structure to Tom in writing before handing off
+- Drop the following files to Tom in writing before handing off:
+  - `library/publish_files/` — full folder (books, LUTs, index)
+  - `library/configs/config_fe_<game_id>.json` — frontend game config
+  - `library/configs/event_config_base.json` — base game event structure
+  - `library/configs/event_config_bonus.json` — bonus event structure (if applicable)
 - Flex to frontend/asset support when math is wrapped up
 - Handle math-related bounce fixes
 

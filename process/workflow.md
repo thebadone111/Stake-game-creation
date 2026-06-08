@@ -10,10 +10,13 @@ _Last updated: 2026-06-05_
 ## Infrastructure Overview
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  LOCAL (Zacke's machine)                                    │
-│  Python math dev + Storybook (SDK) / Phaser dev (Hybrid)   │
-└───────────────────────────┬─────────────────────────────────┘
+┌──────────────────────────────────┐  ┌──────────────────────────────────┐
+│  LOCAL (Zacke's machine)         │  │  LOCAL (Tom's machine)           │
+│  Python math SDK                 │  │  Storybook (SDK) / Phaser (Hybrid│
+└──────────────┬───────────────────┘  └──────────────┬───────────────────┘
+               └──────────────┬───────────────────────┘
+                              │ git push
+┌─────────────────────────────▼───────────────────────────────┐
                             │ git push
 ┌───────────────────────────▼─────────────────────────────────┐
 │  GITHUB (per-game repo)                                     │
@@ -37,37 +40,56 @@ _Last updated: 2026-06-05_
 
 ## The Three Phases
 
-### Phase 1 — Local Development (Zacke)
+### Phase 1 — Local Development
 
-Zacke works entirely locally. No uploads, no cloud dependencies except the Mock RGS on EC2.
+#### Zacke + Nils — Math (European morning)
 
-**Math (both stacks):**
 1. Clone the math SDK: `git@github.com:StakeEngine/math-sdk.git`
 2. Copy `games/template/` to `games/<game-name>/`
-3. Edit `game_config.py` — symbols, reels, paytable, bet modes
+3. Edit `game_config.py` — symbols, reels, paytable, bet modes, RTP target
 4. Edit `gamestate.py` — `run_spin()` logic
-5. Dev run (100 sims, no compression, no optimization):
+5. **Dev run** — fast iteration, catches logic errors:
+   - Set `num_sim_args` to `int(1e4)` in `run.py`
+   - `num_threads = 24`, `rust_threads = 32`
    ```
    make run GAME=<game-name>
    ```
-6. Inspect `library/books/books_base.jsonl` — verify events look right
-7. Production run when logic is confirmed (100k+ sims + optimization):
+6. Inspect `library/configs/event_config_base.json` — verify BookEvent structure looks right
+7. Validate stats against `docs/maths-guide.md` — check RTP, hit rate, base/bonus split
+8. **Production run** — once logic is confirmed:
+   - Set `num_sim_args` to `int(1e6)` in `run.py`
    ```
-   make run GAME=<game-name>   # with run_optimization: True
+   make run GAME=<game-name>
    ```
-8. Upload files live in `library/publish_files/`
+9. Re-validate `library/stats_summary.json` against `docs/maths-guide.md` — 1M figures are authoritative
+10. **Handoff to Tom** — deliver in writing before Tom's session starts:
+    - `library/publish_files/` — full folder (compressed books, LUTs, index.json)
+    - `library/configs/config_fe_<game_id>.json` — frontend game config (grid, paylines, RTP, bet modes)
+    - `library/configs/event_config_base.json` — base game BookEvent structure
+    - `library/configs/event_config_bonus.json` — bonus BookEvent structure (if applicable)
+    - Confirm with Tiger that art assets are ready before Tom starts
 
-**Frontend — SDK Stack (Storybook):**
+#### Tom — Frontend (Taiwan evening)
+
+Tom receives the handoff package and builds entirely from that. He does not write math, does not define paytables or reel strips, and does not modify `config.ts` values — Zacke delivers it complete.
+
+**SDK Stack (Storybook):**
 1. Clone the web-sdk repo (URL from ACP)
 2. Copy an example app as a starting point (`apps/lines` for slots)
-3. Copy math output event examples into `stories/data/` files
-4. Build and test every feature in Storybook:
+3. Drop in `config_fe_<game_id>.json` from Zacke — use this to configure grid, paylines, bet modes
+4. Drop in `publish_files/` from Zacke — books and LUTs for the mock RGS
+5. Drop in art assets from Tiger — spritesheet atlas (`.json` + `.png`), background, UI, sounds
+6. Copy BookEvent structures from Zacke's `event_config_base.json` / `event_config_bonus.json` into `stories/data/` files
+   - Symbol names in event configs **must exactly match** sprite names in Tiger's spritesheet
+7. Wire any custom BookEvents in `bookEventHandlerMap.ts`
+7. Build and test every feature in Storybook:
    ```
    pnpm run storybook --filter=<game-name>
    ```
-5. All Storybook stories pass = game is functionally complete
+8. All Storybook stories pass = game is functionally complete
+9. Push to GitHub → Cloudflare auto-deploys
 
-**Frontend — Hybrid Stack (Phaser):**
+**Hybrid Stack (Phaser):**
 1. Start a new Phaser 3 + TypeScript project
 2. Point `rgs_url` at the EC2 Mock RGS
 3. Develop and test game scenes locally with live fake sessions
@@ -75,6 +97,7 @@ Zacke works entirely locally. No uploads, no cloud dependencies except the Mock 
    ```
    npm run build
    ```
+5. Push to GitHub → Cloudflare auto-deploys
 
 ---
 
@@ -186,7 +209,7 @@ game-name/
     games/game-name/          ← Zacke's Python game files
     library/publish_files/    ← Generated — upload these to ACP math
   frontend/
-    src/                      ← Zacke's game frontend source
+    src/                      ← Tom's game frontend source
     dist/                     ← Generated — upload these to ACP frontend
     public/
       assets/                 ← Game art (not SDK sample assets)
@@ -207,8 +230,8 @@ game-name/
 
 | Role | Phase 1 | Phase 2 | Phase 3 |
 |------|---------|---------|---------|
-| **Zacke + Nils** | Math SDK — game_config, gamestate, production sim run (~2 hrs). Then flex to: spritesheet processing, Bet Replay IDs. Done by 12pm CET. | Backend support on bounce fixes if needed | — |
-| **Tom** | Frontend build (evenings TWN) — event wiring, animations, asset integration, Storybook, GitHub push. Always on the next game — never pulled into fixes. | — | — |
+| **Zacke + Nils** | Math SDK — game_config, gamestate. Dev sim (`1e4`) to verify logic, production sim (`1e6`) when confirmed (~2 hrs total). Delivers `publish_files/`, `config_fe_*.json`, `event_config_*.json` to Tom. Then flex to: spritesheet processing (TexturePacker), Bet Replay IDs. Done by 12pm CET. | Backend support on bounce fixes if needed | — |
+| **Tom** | Frontend build (evenings TWN) — receives config.ts + BookEvent structure from Zacke + art from Tiger. Wires events, builds animations, integrates assets, Storybook, GitHub push. Always on the next game — never pulled into fixes. | — | — |
 | **Tiger** | Issues brief + generates AI art assets day before. Tile assets + blurb during morning. Assists Tom on frontend during Tom's evening. | Fixes bounces with Ollie — owns all frontend fixes | ACP submission, logs outcome, briefs next game, generates art for next day |
 | **Ollie** | — | Full checklist review next morning. Writes bounce notes by 11am CET. Leads fix with Tiger. | — |
 
