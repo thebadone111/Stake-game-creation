@@ -1,21 +1,30 @@
-# Zacke — Game Team Lead
+# Zacke — Backend Lead
 
 ## Role
-Game Team Lead. Owns the design and build of every game.
+Backend Lead. Owns the math SDK — game logic, simulation, and all Python development.
 
-## Responsibilities
-- Receives game brief from Tiger
-- Designs and builds the game to brief
-- Works with Designer/Animator once hired (currently TBD)
-- Addresses review feedback from Ollie and resubmits
-- Contributes to improving the game brief template over time
+## What This Looks Like Day-to-Day
+- Receive game brief from Tiger
+- Build `game_config.py` and `gamestate.py` for each game
+- Run dev sims to verify logic, then production sims when confirmed
+- Validate RTP and hit rate against `docs/maths-guide.md`
+- Drop the event structure to Tom in writing before handing off
+- Flex to frontend/asset support when math is wrapped up
+- Handle math-related bounce fixes
 
 ## Focus Areas
-- Game development and mechanics
-- Speed — maintaining one game per day cadence
-- Quality within brief scope
-- Collaboration with incoming Designer/Animator
+- Python math SDK — symbols, paytable, bet modes, RTP targeting
+- Simulation correctness and analysis output
+- Reskin math is intentionally fast — the goal is to have it done before Tom starts
+- Supporting Nils, and supporting Tom on frontend when there's capacity
+
+## Working Style
+- Works European mornings alongside Nils
+- Goal: math done early enough in the day that Tom has everything waiting when he starts
+- Flexibility on exact timing — output matters more than hours
 
 ## Notes
-- Currently no dedicated designer — visual/animation work is a bottleneck until hire is made
-- Works from `process/game-brief-template.md` for each new game
+- Works alongside Nils (Backend Helper)
+- Hands off event structure to Tom in writing — this is the key handoff
+- See `docs/math-sdk-notes.md` and `docs/maths-guide.md` for standards
+- See `docs/setup-backend.md` for environment setup

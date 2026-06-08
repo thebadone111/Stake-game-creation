@@ -84,6 +84,7 @@ No ACP involved. Ollie reviews against the mock RGS via a Cloudflare preview URL
 
 **Step 1 — Zacke pushes to GitHub**
 - Each game has its own GitHub repository
+- Each game repo has its own Cloudflare Pages project (set up when the game is created)
 - Push triggers Cloudflare Pages auto-deploy
 - Cloudflare URL format: `https://<game-name>.pages.dev`
 - The game URL includes `rgs_url` pointing at the EC2 Mock RGS:
@@ -206,9 +207,10 @@ game-name/
 
 | Role | Phase 1 | Phase 2 | Phase 3 |
 |------|---------|---------|---------|
-| **Zacke** | Builds math + frontend, pushes to GitHub | Fixes bounces from Ollie | Hands repo to Tiger |
-| **Ollie** | — | Full review pass, approve or bounce | — |
-| **Tiger** | Issues brief, checks review URL | First smoke test, coordinates review | ACP submission, logs outcome, briefs next game |
+| **Zacke + Nils** | Math SDK — game_config, gamestate, production sim run (~2 hrs). Then flex to: spritesheet processing, Bet Replay IDs. Done by 12pm CET. | Backend support on bounce fixes if needed | — |
+| **Tom** | Frontend build (evenings TWN) — event wiring, animations, asset integration, Storybook, GitHub push. Always on the next game — never pulled into fixes. | — | — |
+| **Tiger** | Issues brief + generates AI art assets day before. Tile assets + blurb during morning. Assists Tom on frontend during Tom's evening. | Fixes bounces with Ollie — owns all frontend fixes | ACP submission, logs outcome, briefs next game, generates art for next day |
+| **Ollie** | — | Full checklist review next morning. Writes bounce notes by 11am CET. Leads fix with Tiger. | — |
 
 ---
 
