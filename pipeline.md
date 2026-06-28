@@ -1,32 +1,24 @@
-# Daily Pipeline
+# Pipeline
 
-_Last updated: 2026-06-08_
+_Last updated: 2026-06-27_
 
-## 🔨 In Development
-| Game | Assigned To | Brief Date | Target Submission |
-|------|-------------|------------|-------------------|
-| — | — | — | — |
+## In Development
+| Game | Owner | Branch | Started | Notes |
+|------|-------|--------|---------|-------|
+| Ayakashi 2 | Max | `final-dev` | 2026-06-27 | Art overhaul — larger symbols, larger reel frame, animation clips |
+| Ayakashi 1 (polish) | Zacke | `ayakashi1` | 2026-06-27 | Polish + upgrade pass on v1; staged for resubmission or v2 |
 
-## 👀 In Review
-| Game | Reviewer | Sent for Review | Notes |
-|------|----------|-----------------|-------|
-| — | — | — | — |
+## In Review
+| Game | Sent | Notes |
+|------|------|-------|
+| — | — | — |
 
-## ✅ Submitted
-| Game | Submitted | Stake Ref | Status |
-|------|-----------|-----------|--------|
-| — | — | — | — |
+## Submitted
+| Game | Date | Stake Ref | Status |
+|------|------|-----------|--------|
+| Ayakashi (v1) | 2026-06-27 | — | Under review |
 
-## 🔄 Bounced / Rework
-| Game | Reason | Owner | Due Back |
-|------|--------|-------|----------|
-| — | — | — | — |
-
----
-
-## How to Update
-
-- **Tiger** — adds a row when assigning a new brief, and again when submitting to ACP
-- **Zacke** — moves the row to In Review when math + frontend handoff is complete
-- **Ollie** — marks approved or bounced after review
-- **Anyone** — update Notes column freely; keep it short and useful
+## Bounced / Rework
+| Game | Reason | Due Back |
+|------|--------|----------|
+| — | — | — |

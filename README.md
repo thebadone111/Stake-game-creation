@@ -1,48 +1,36 @@
-# Stake Game Creation
+# Stake Game Studio
 
-A game studio building and submitting casino games to the Stake Engine platform (Stake.com / Stake.us). The goal is a steady cadence of shipped games — reskins to keep the pipeline moving, with higher-quality 3-star games built in parallel.
+Two-person studio building casino games for the Stake Engine platform (Stake.com / Stake.us).
 
----
+## Team
+- **Max** (Tiger) — art, frontend, submissions, creative direction
+- **Zacke** — math SDK, game logic, Python
 
-## The Team
+No formal roles. Both collaborate on design and direction based on what's needed.
 
-| Name | Role |
-|------|------|
-| Tiger | Operations Lead — pipeline, art (AI-generated), ACP submission, assists on frontend |
-| Zacke | Backend Lead — math SDK, game logic, simulation |
-| Nils | Backend Helper — pairs with Zacke, flexes to frontend/art pipeline when math is done |
-| Tom | Frontend Lead — PixiJS + Svelte SDK, Storybook, animations |
-| Ollie | Review Lead — checklist QA, bounce fix ownership with Tiger |
-| TBD | Designer/Animator — actively hiring |
-
-**Timezones:** Zacke, Nils, Ollie, Tiger are in Europe (CEST). Tom is in Taiwan (UTC+8, 6 hours ahead). Tiger works across both and bridges the handoff.
+ACP: [stake-engine.com/teams/maxiai](https://stake-engine.com/teams/maxiai)
 
 ---
 
-## How a Game Gets Built
+## Games
 
-The pipeline is follow-the-sun. The rough flow:
-
-1. **European morning** — Zacke + Nils build the math. Tiger preps art, brief, and tile assets.
-2. **Handoff** — Zacke drops the event structure to Tom in writing. Art + brief are ready and waiting.
-3. **Taiwan evening** — Tom builds the frontend. Tiger assists. Game gets pushed to GitHub → Cloudflare auto-deploys.
-4. **Next European morning** — Ollie reviews the Cloudflare preview. Either approves (Tiger submits to ACP) or bounces with notes (Tiger + Ollie fix — Tom always moves forward to the next game).
-
-For a reskin, the goal is to complete all four steps in one day.
+| Game | Status | Branch |
+|------|--------|--------|
+| Ayakashi (yokai slots, v1) | Submitted | `ayakashi1` (frozen) |
+| Ayakashi 2 | In development | `final-dev` |
 
 ---
 
-## Two Stacks
+## Platform
+**Stake Engine** — pre-simulated outcomes, 97% RTP target, stateless architecture, Bet Replay mandatory.
+Review: 3 independent reviewers, avg ≥2.0 stars → published. 10% GGR perpetual royalty.
 
-**SDK Stack — for slot games (reels-based)**
-- Math: Python math SDK
-- Frontend: PixiJS + Svelte 5, Storybook
-- Use for: reskins, CS2 case opening, most submissions
+---
 
-**Hybrid Stack — for non-slot formats**
-- Math: same Python math SDK
-- Frontend: Phaser 3 + TypeScript
-- Use for: Island Combat, RPG/adventure formats
+## Tech Stack
+- **Math**: Python math-sdk — generates CSV probability tables + event configs
+- **Frontend**: PixiJS + Svelte 5 + SvelteKit monorepo (web-sdk)
+- **Deploy**: GitHub → Cloudflare Pages (auto), Mock RGS on EC2 for testing
 
 ---
 
@@ -50,96 +38,76 @@ For a reskin, the goal is to complete all four steps in one day.
 
 ```
 Stake game creation/
-  CLAUDE.md                    ← working memory (team, cadence, status)
-  pipeline.md                  ← live tracker — check this for current game status
-  todo.md                      ← master priority tracker
-  game_ideas.md                ← concept library (reskins, CS2, Island Combat, Gacha)
+  CLAUDE.md                    ← working memory for Claude (tech decisions, locked choices, context)
   README.md                    ← this file
+  pipeline.md                  ← live tracker — current game status
+  todo.md                      ← current priority list
+  game_ideas.md                ← concept library
 
   team/
-    tiger.md
-    zacke.md
-    nils.md
-    tom.md
-    ollie.md
+    tiger.md                   ← Max's profile
+    zacke.md                   ← Zacke's profile
 
   process/
-    game-brief-template.md     ← Zacke uses this for every game
-    review-checklist.md        ← Ollie's QA criteria
-    submission-checklist.md    ← Tiger's pre-ACP checks
-    workflow.md                ← full workflow + infrastructure diagram
+    game-brief-template.md     ← brief template for each new game
+    submission-checklist.md    ← pre-ACP self-review checklist
+    workflow.md                ← how a game gets built start to finish
 
   resources/
-    stake-requirements.md      ← platform specs, tile asset requirements
+    art-pipeline.md            ← full art + animation pipeline (fal.ai + RunComfy)
+    stake-requirements.md      ← platform specs and technical limits
     stack-stake-sdk.md         ← SDK stack guide (slots)
-    stack-hybrid.md            ← Hybrid stack guide (non-slots)
-    art-pipeline.md            ← art tools, sprite sheet workflow, free asset sources
+    stack-hybrid.md            ← Hybrid stack guide (non-slots, Phaser 3)
 
   docs/
-    setup-backend.md           ← dev environment setup for Zacke + Nils
-    setup-frontend.md          ← dev environment setup for Tom
-    mock-rgs-spec.md           ← Flask mock RGS spec (endpoints, responses, EC2 deploy)
-    maths-guide.md             ← math standards + AI review checklist
+    setup-backend.md           ← math SDK dev environment setup
+    setup-frontend.md          ← web-sdk dev environment setup
+    mock-rgs-spec.md           ← Flask mock RGS spec
+    maths-guide.md             ← math standards + validation rules
     rgs-notes.md               ← Carrot RGS API reference
     math-sdk-notes.md          ← math SDK reference
     frontend-sdk-notes.md      ← frontend SDK reference
-    approval-notes.md          ← submission + quality notes
+    approval-notes.md          ← submission quality notes
+    how-games-work-sdk-stack.md
+    how-games-work-hybrid-stack.md
     stake-engine-md-doc/       ← offline mirror of stake-engine.com/docs (64 files)
 
+  briefs/                      ← per-game brief files
   submissions/
-    log.md                     ← full submission history
-
-  briefs/                      ← per-game brief files (created as games are assigned)
+    log.md                     ← submission history
 ```
 
 ---
 
 ## Game Concepts
 
-Three tiers, in order of priority:
+See `game_ideas.md` for the full library. Current focus is Ayakashi 2.
 
-**Tier 1 — Reskins (start here)**
-Japanese-themed reskins of proven top performers. These validate the pipeline and generate royalties quickly.
-- Reskin A — Underground fighting tournament (based on Dojo Duel, #10 performer)
-- Reskin B — Yokai hunters (based on Harakiri, #13 performer)
-- Reskin C — Anime idol group cluster pays (based on MIKO, #16 performer)
-
-**Tier 2 — New Formats**
-- CS2 Case Opening — loot box slot, SDK stack, CS2 aesthetic
-- Island Combat — stateless RPG skin, Hybrid/Phaser stack
-- Gacha PNG — collectible card pulls with downloadable PNGs
-
-**Tier 3 — Magnus Opus**
-- Gacha NFT — Gacha PNG + off-platform NFT claim portal. Build last, after Gacha PNG is approved and earning.
+Highest priority future games:
+- **CS2 Case Opening** — loot box slot, SDK stack, proven format on Stake
+- **Yokai Hunters** — Harakiri-based reskin, dark folklore aesthetic
+- **Island Combat** — stateless RPG skin, Phaser 3 hybrid stack
+- **Gacha PNG** — collectible card pulls, eventually with NFT layer
 
 ---
 
-## Platform Rules (Key Points)
+## Art Pipeline Overview
 
-- All outcomes must be **pre-simulated** — no live RNG, fully stateless
-- **Bet Replay is mandatory** — games without it will not be approved
-- **Target RTP: 97%** (range: 96.5%–97.5%)
-- Tile assets required per submission: BG + FG (under 3MB combined) + Provider logo
-- Stake.us auto-qualified if `sweeps_en.json` language file is included
-- Review: 3 independent reviewers — avg ≥ 2.0 stars → full review; < 2.0 → not published (can resubmit within 3 days)
-- Post-approval: only minor visual fixes — math and mechanics are locked
+See `resources/art-pipeline.md` for the full pipeline.
 
----
+**Stills**: FLUX 1.1 Pro Ultra + Seedream v4 via fal.ai. AuraSR 4x upscale. Manual background removal by Max.
 
-## Payout Model
+**Character animations (Tier 1)**: RunComfy SVI Pro — Wan 2.2 + Stable Video Infinity. ~$2–5/run.
 
-10% GGR perpetual royalty. At 97% RTP, the average game earns roughly $477/month in royalties. Top performers reach $3.75K–$7.5K/month. Payouts close monthly at UTC midnight — set your wallet address in ACP or the balance rolls over.
+**FX/particles (Tier 2)**: fal.ai Wan or Hailuo → 16-frame 4×4 WebP sprite sheets → PixiJS AnimatedSprite.
 
 ---
 
-## Getting Started
-
-**Backend (Zacke, Nils):** See `docs/setup-backend.md`
-
-**Frontend (Tom):** See `docs/setup-frontend.md`
-
-**Review (Ollie):** See `process/review-checklist.md`
-
-**ACP:** stake-engine.com/teams/maxiai
-
-**Current pipeline status:** See `pipeline.md`
+## Platform Key Rules
+- All outcomes pre-simulated — no live RNG, fully stateless
+- Bet Replay mandatory (URL param `bet=<event_id>`)
+- Target RTP: 97% (range 96.5–97.5%)
+- Tile assets: BG + FG under 3MB combined + Provider logo
+- Stake.us: include `sweeps_en.json` language file
+- No external URLs in game code (strict XSS policy)
+- Original games only, no Stake branding, no IP infringement

@@ -1,16 +1,20 @@
 # Game Ideas
 
-_Last updated: 2026-06-05 | Living document — add and evolve ideas here_
+_Last updated: 2026-06-27 | Living document — add and evolve ideas here_
 
 ---
 
+## Current Status
+- **Ayakashi** (yokai 5x5 slot) — submitted to Stake (`ayakashi1` branch)
+- **Ayakashi 2** — in development on `final-dev` branch, art + animation overhaul in progress
+
 ## Strategy
 
-1. **Reskin proven performers** — copy the mechanics of successful games, bring a new visual identity. Lower risk, faster to build, validates the pipeline.
-2. **Unexplored formats** — gacha, idle, collectible mechanics. No competition on Stake Engine. Higher ceiling, higher risk.
-3. **Mobile games ports** — Port popular mobile games, reskin, simplify mechanics and launch. 
+1. **High-quality original games** — polish and quality first. Ayakashi is the template. Build on it.
+2. **Unexplored formats** — gacha, collectible, RPG-skin mechanics. No competition on Stake Engine. Higher ceiling, higher risk.
+3. **Reskins as fast follow-ups** — once the pipeline is proven, reskins of top performers can be produced quickly.
 
-First 1-2 games should be reskins to establish the pipeline. Introduce experimental formats from game 3 onward.
+Priority: finish Ayakashi 2 to a high quality bar, then move to CS2 Case Opening or the next original concept.
 
 ---
 

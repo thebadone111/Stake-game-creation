@@ -1,35 +1,22 @@
-# Zacke — Backend Lead
+# Zacke
 
-## Role
-Backend Lead. Owns the math SDK — game logic, simulation, and all Python development.
+Math SDK, game logic, simulation, Python development. Collaborates with Max on game design and direction.
 
-## What This Looks Like Day-to-Day
-- Receive game brief from Tiger
-- Build `game_config.py` and `gamestate.py` for each game
-- Run dev sims (`int(1e4)`) to verify logic quickly during iteration
-- Run production sims (`int(1e6)`) once logic is confirmed — use 24 Python threads, 32 Rust threads
-- Validate RTP and hit rate against `docs/maths-guide.md`
-- Drop the following files to Tom in writing before handing off:
-  - `library/publish_files/` — full folder (books, LUTs, index)
-  - `library/configs/config_fe_<game_id>.json` — frontend game config
-  - `library/configs/event_config_base.json` — base game event structure
-  - `library/configs/event_config_bonus.json` — bonus event structure (if applicable)
-- Flex to frontend/asset support when math is wrapped up
-- Handle math-related bounce fixes
+## Day-to-Day
+- `game_config.py` + `gamestate.py` for each new game
+- Dev sim (`int(1e4)`) to verify logic quickly
+- Production sim (`int(1e6)`) once logic is confirmed
+- Validate RTP + hit rate against `docs/maths-guide.md`
+- Handoff: `publish_files/`, `config.ts`, event configs
 
-## Focus Areas
-- Python math SDK — symbols, paytable, bet modes, RTP targeting
-- Simulation correctness and analysis output
-- Reskin math is intentionally fast — the goal is to have it done before Tom starts
-- Supporting Nils, and supporting Tom on frontend when there's capacity
-
-## Working Style
-- Works European mornings alongside Nils
-- Goal: math done early enough in the day that Tom has everything waiting when he starts
-- Flexibility on exact timing — output matters more than hours
+## Handoff Deliverables
+- `library/publish_files/` — books, LUTs, index.json
+- `library/configs/config_fe_<game_id>.json` — frontend game config
+- `library/configs/event_config_base.json` — base game event structure
+- `library/configs/event_config_bonus.json` — bonus event structure (if applicable)
 
 ## Notes
-- Works alongside Nils (Backend Helper)
-- Hands off event structure to Tom in writing — this is the key handoff
+- No formal role title — collaborates with Max
+- Math correctness and RTP targeting are primary focus
 - See `docs/math-sdk-notes.md` and `docs/maths-guide.md` for standards
 - See `docs/setup-backend.md` for environment setup

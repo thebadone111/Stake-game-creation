@@ -1,22 +1,30 @@
 # Submission Checklist
 
-_Used by Tiger before submitting any game to the Stake platform._
+Pre-ACP self-review. Run through this before submitting any game.
 
 ---
 
-## Pre-Submission
-- [ ] Ollie has signed off (review checklist complete, decision = Approved)
+## Self-Review
+- [ ] All game flows work: base game, win, big win, bonus trigger, free spins, retrigger, max win
+- [ ] No softlocks or infinite loops
+- [ ] Bet Replay works with documented event IDs (normal win, big win, max win, bonus trigger, loss)
+- [ ] Mobile layout correct (resize browser or DevTools device mode)
+- [ ] No console errors — especially no external URL calls (strict XSS policy)
+- [ ] All Storybook stories pass
 - [ ] Game brief acceptance criteria all met
-- [ ] Final build packaged in correct format (see `resources/stake-requirements.md`)
-- [ ] Game name confirmed and consistent across all files
+- [ ] Final build packaged correctly (see `resources/stake-requirements.md`)
 
-## Submission
-- [ ] Submitted to Stake platform
-- [ ] Stake reference number recorded
-- [ ] Entry added to `submissions/log.md`
-- [ ] `pipeline.md` updated to reflect submission
+## Assets
+- [ ] Tile assets ready: `GameTitle-BG.png`, `GameTitle-FG.png`, `ProviderName-Logo.png`
+- [ ] BG + FG tile assets under 3MB combined
+- [ ] `sweeps_en.json` included in build (required for Stake.us eligibility)
+- [ ] General disclaimer text in game rules popup
+- [ ] No external fonts or image URLs in the build
 
-## Post-Submission
-- [ ] Team notified of submission
-- [ ] Next game brief issued to Zacke
-- [ ] Any Stake feedback logged in `submissions/log.md`
+## ACP Submission
+- [ ] Math files uploaded (`library/publish_files/`)
+- [ ] Frontend build uploaded (`dist/`)
+- [ ] Tile assets uploaded
+- [ ] Submission blurb written and attached
+- [ ] Stake reference number recorded in `submissions/log.md`
+- [ ] `pipeline.md` updated
